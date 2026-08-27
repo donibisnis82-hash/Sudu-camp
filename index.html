@@ -8,18 +8,18 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f4f6f2;color:#222}
 button,input{font:inherit}
-header{position:sticky;top:0;z-index:10;padding:18px 5%;background:#123d2b;color:#fff}
+header{position:sticky;top:0;z-index:10;padding:14px 5%;background:#123d2b;color:#fff}
 .nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:22px;font-weight:800}.logo span{color:#f4cf3a}
+.logo{font-size:22px;font-weight:800}.logo span{color:#f4cf3a}.nav-links{display:flex;gap:20px;align-items:center}.nav-links a{color:#fff;text-decoration:none;font-weight:700}.nav-links a:hover{color:#f4cf3a}
 .btn{border:0;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer}
 .btn:disabled{opacity:.6;cursor:not-allowed}.btn-green{background:#0c6b46;color:#fff}.btn-yellow{background:#f4cf3a;color:#173b2b}
-.hero{padding:45px 5%;background:linear-gradient(135deg,#173f2c,#2f6b4b);color:#fff}
+.hero{padding:45px 5%;background:linear-gradient(135deg,#173f2c,#2f6b4b);color:#fff}.profile{margin-top:25px}.profile-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:center}.profile-copy h2{font-size:32px;margin-top:0;color:#123d2b}.profile-copy h2 span{color:#e87500}.profile-copy p{line-height:1.7;color:#4f5b53}.profile-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}.profile-item{padding:15px;border-radius:14px;background:#edf3ed;text-align:center}.profile-item b{display:block;color:#123d2b;margin-bottom:5px}.profile-image{width:100%;display:block;border-radius:18px;box-shadow:0 8px 30px #00000018}@media(max-width:800px){.profile-grid{grid-template-columns:1fr}.profile-list{grid-template-columns:1fr}.nav-links{display:none}}
 .hero-inner{max-width:1100px;margin:auto}.hero h1{margin:0 0 10px;font-size:42px}.hero p{max-width:650px;line-height:1.6}
 .container{max-width:1100px;margin:25px auto;padding:0 15px}.layout{display:grid;grid-template-columns:1fr 350px;gap:20px}
 .card{padding:20px;background:#fff;border-radius:18px;box-shadow:0 5px 20px #00000010}
-.products{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.product{padding:15px;border:1px solid #e2e6e2;border-radius:15px}
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.product{padding:15px;transition:transform .28s ease,box-shadow .28s ease;border:1px solid #e2e6e2;border-radius:15px}
 .product .pic{height:110px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:#eaf0ea;font-size:52px}
-.product h3{margin:10px 0 5px}.price{font-weight:800;color:#0c6b46}
+.product h3{margin:10px 0 5px}.product:hover{transform:translateY(-6px);box-shadow:0 14px 32px #00000018}.price{font-weight:800;color:#0c6b46}
 .product-row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
 .qty{display:flex;gap:8px;align-items:center}.qty button{width:32px;height:32px;border:0;border-radius:8px;background:#123d2b;color:#fff;cursor:pointer}
 label{display:block;font-weight:600}input{width:100%;margin:6px 0 14px;padding:13px;border:1px solid #ccd4cc;border-radius:10px;font-size:15px}
@@ -31,20 +31,61 @@ input:disabled{background:#f1f3f1;color:#666}.duration-box{margin:4px 0 16px;pad
 .result h3{margin-top:0;color:#123d2b}.result-row{margin:8px 0}.wa{display:block;text-align:center;text-decoration:none;margin-top:12px}
 footer{padding:35px;text-align:center;color:#687168}
 @media(max-width:800px){.layout{grid-template-columns:1fr}.products{grid-template-columns:1fr}.hero h1{font-size:32px}}
+
+.profile-gallery{margin-top:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.profile-gallery figure{margin:0;overflow:hidden;border-radius:15px;background:#edf3ed;box-shadow:0 6px 20px #00000012}
+.profile-gallery img{width:100%;height:190px;display:block;object-fit:cover;transition:transform .45s ease,filter .45s ease}
+.profile-gallery figure:hover img{transform:scale(1.07);filter:brightness(1.04)}
+.profile-gallery figcaption{padding:9px 10px;font-size:12px;color:#526057;text-align:center}
+@media(max-width:800px){.profile-gallery{grid-template-columns:repeat(2,1fr)}.profile-gallery img{height:170px}}
+@media(max-width:480px){.profile-gallery{grid-template-columns:1fr}.profile-gallery img{height:220px}}
+
+</style>
+<style>
+/* === Sudut Camp animations === */
+@keyframes scFadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.sc-reveal{animation:scFadeUp .7s ease both}
+.sc-hover{transition:transform .28s ease,box-shadow .28s ease}
+.sc-hover:hover{transform:translateY(-6px);box-shadow:0 14px 32px #00000018}
+.sc-btn{transition:transform .2s ease,box-shadow .2s ease}
+.sc-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px #00000018}
+.sc-float{animation:scFloat 3.5s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+<style id="sudut-adventure-style">
+@keyframes sudutAdventureFade{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+#tentang-sudut-adventure{animation:sudutAdventureFade .8s ease both}
+@media(max-width:700px){
+  #tentang-sudut-adventure{margin-top:18px!important}
+  #tentang-sudut-adventure h2{font-size:1.5rem}
+}
 </style>
 </head>
 <body>
 <header><div class="nav"><div class="logo">SUDUT <span>CAMP RENTAL</span></div>
+<div class="nav-links"><a href="#profil">Profil</a><a href="#alat">Alat</a><a href="#booking">Booking</a><a href="https://www.instagram.com/sudut_adventure09?igsh=MWRuOHhqeXlkejluYw==" target="_blank" rel="noopener">Instagram</a><a href="#tentang-sudut-adventure">Tentang Sudut Adventure</a></div>
 <button class="btn btn-yellow" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Booking</button></div></header>
 
-<section class="hero"><div class="hero-inner">
-<h1>Perlengkapan Camping</h1>isi data" nama dan nomer WhatsApp dengan sesuai.</p>
+<section class="hero sc-reveal"><div class="hero-inner">
+<h1>Perlengkapan Camping</h1>
+<p>Rental alat camping dengan proses booking sederhana. Pilih alat, tentukan tanggal, isi data, lalu booking masuk otomatis ke Google Spreadsheet.</p>
 </div></section>
 
-<main class="container"><div class="layout">
-<section class="card"><h2>Daftar Alat</h2><div class="products" id="products"></div></section>
+<main class="container">
+<section class="card profile sc-reveal" id="profil"><div class="profile-grid"><div class="profile-copy"><h2>Profil <span>Sudut Camp</span></h2><p>Sudut Camp Rental hadir untuk membantu kamu menikmati kegiatan camping, hiking, dan aktivitas outdoor dengan perlengkapan yang praktis dan mudah disewa.</p><p>Kami mengutamakan proses sewa yang sederhana, informasi harga yang jelas, serta pelayanan yang ramah agar persiapan petualanganmu lebih nyaman.</p><div class="profile-list"><div class="profile-item"><b>Perlengkapan</b>Outdoor & camping</div><div class="profile-item"><b>Sewa Mudah</b>Booking online</div><div class="profile-item"><b>Pelayanan</b>Responsif & ramah</div></div></div><div><img class="profile-image" src="Logo baru.png" alt="Profil Sudut Camp"></div></div>
+<div class="profile-gallery sc-reveal" aria-label="Foto kegiatan Sudut Camp">
+  <figure><img src="profil-foto-1.jpg" alt="Kegiatan Sudut Camp di pegunungan" loading="lazy"><figcaption>Petualangan di pegunungan</figcaption></figure>
+  <figure><img src="profil-foto-2.jpg" alt="Kegiatan Sudut Camp di air terjun" loading="lazy"><figcaption>Eksplorasi alam</figcaption></figure>
+  <figure><img src="profil-foto-3.jpg" alt="Pendakian Sudut Camp di puncak" loading="lazy"><figcaption>Pendakian bersama</figcaption></figure>
+  <figure><img src="profil-foto-4.jpg" alt="Pendakian Sudut Camp di jalur pegunungan" loading="lazy"><figcaption>Perjalanan outdoor</figcaption></figure>
+</div>
+</section>
 
-<aside class="card" id="booking">
+<div class="layout" id="alat">
+<section class="card sc-reveal"><h2>Daftar Alat</h2><div class="products" id="products"></div></section>
+
+<aside class="card sc-reveal" id="booking">
 <h2>Form Booking</h2>
 <label for="nama">Nama</label><input id="nama" type="text" placeholder="Nama lengkap">
 <label for="wa">No. WhatsApp</label><input id="wa" type="tel" placeholder="08xxxxxxxxxx">
@@ -72,11 +113,30 @@ footer{padding:35px;text-align:center;color:#687168}
 </div>
 </aside></div></main>
 
-<footer>Sudut Camp Rental alat-alat • Perlengkapan Camping</footer>
+
+<section id="tentang-sudut-adventure" class="card sc-reveal" style="margin-top:24px;">
+  <div style="display:grid;grid-template-columns:1fr;gap:18px;align-items:center;">
+    <div>
+      <span style="display:inline-block;font-weight:700;color:#d9ad16;letter-spacing:.08em;text-transform:uppercase;font-size:.85rem;">Tentang Kami</span>
+      <h2 style="margin:8px 0 10px;">Sudut Adventure</h2>
+      <p style="line-height:1.8;margin:0;">
+        <strong>Sudut Adventure</strong> adalah ruang bagi para pecinta alam untuk menikmati perjalanan,
+        camping, dan petualangan bersama. Kami hadir untuk mendukung kegiatan outdoor dengan semangat
+        kebersamaan, pengalaman, dan eksplorasi alam.
+      </p>
+      <p style="line-height:1.8;margin:12px 0 0;">
+        Melalui <strong>Sudut Camp Rental</strong>, kami menyediakan perlengkapan camping dengan proses
+        booking yang sederhana agar kamu bisa lebih mudah mempersiapkan perjalanan.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>Sudut Camp Rental alat-alat • Perlengkapan Camping • <a href="#profil">Profil Sudut Camp</a> • <a href="https://www.instagram.com/sudut_adventure09?igsh=MWRuOHhqeXlkejluYw==" target="_blank" rel="noopener">Instagram @sudut_adventure09</a></footer>
 
 <script>
 // ==================== KONFIGURASI ====================
-const GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/AKfycbwKKJbFB7Gy3YrxI7XLOy34s18VYPzGHfF-lH3R9jUuaWptN6t-P5gGoJrxHbgJ9l7JSg/exec";
+const GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/AKfycbwLXWxBIVHtSRjqqvcHJdvWjJtbQ_sAUh3GECVmqOkcZ9yu9YZXSMyW2Z_ue_5DmVKqkA/exec";
 const NOMOR_WA_RENTAL = "6285182673441"; // Ganti dengan nomor WhatsApp Sudut Camp
 const DURASI_SEWA = 2;
 let keranjang = [];
